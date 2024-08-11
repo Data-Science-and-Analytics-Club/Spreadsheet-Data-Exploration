@@ -10,7 +10,7 @@
 Spreadsheets are used to store and represent data in tabular form, Microsoft launched their spreadsheet editor excel in 1985, it is one of the most widely used tools for data entry and basic data analysis since in financial institutions, entries and government 
 
 ### BASIC EXCEL FUNCTIONS 
-![formula-representation](images\image.png)
+
 
 Begin your formula by typing an equals sign (=) in the cell where you want the result to appear. This tells Excel that you are entering a formula.
 To perform calculations, you need to reference the cells that contain the data. For example, if you want to add the values from cells A1 and B1, you would type =A1+B1 into the cell where you want the result.

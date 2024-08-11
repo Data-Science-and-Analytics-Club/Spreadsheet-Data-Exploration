@@ -58,14 +58,42 @@ Syntax : =VLOOKUP(lookup_value,table_array,col_index_num,[range_lookup]
  - **Pivot Tables** : tool for summarizing and analyzing data in Excel.
 To create a new Pivot Table, we first need to select the data range which we would like to analyze, then click on one of the desired cells in our data range, then click Insert tab, then Pivot Table.
 
+### Visual Basic for Applications (VBA)
+
+VBA (Visual Basic for Applications) is a programming language used for automation and customization within Microsoft Excel and other Microsoft Office applications. It allows users to create macros—automated sequences of actions—and build complex functionality beyond standard Excel capabilities.
+
+ **In Order to get acess to VBA you have to switch on the devlopers mode in Excel**
+ File > Option > Customize the ribbon > Check the Developer Option
+
+ ### VBA script for inserting multiple pictures and automatically resizing in selected cells
+```
+Sub InsertPictures()
+Dim PicList() As Variant
+Dim PicFormat As String
+Dim Rng As Range
+Dim sShape As Shape
+On Error Resume Next
+PicList = Application.GetOpenFilename(PicFormat, MultiSelect:=True)
+xColIndex = Application.ActiveCell.Column
+If IsArray(PicList) Then
+xRowIndex = Application.ActiveCell.Row
+For lLoop = LBound(PicList) To UBound(PicList)
+Set Rng = Cells(xRowIndex, xColIndex)
+Set sShape = ActiveSheet.Shapes.AddPicture(PicList(lLoop), msoFalse, msoCTrue, Rng.Left, Rng.Top, Rng.Width, Rng.Height)
+xRowIndex = xRowIndex + 1
+Next
+End If
+End Sub
+```
+
 ### Power Queries in excel 
 
 Power Query is a data connectivity and transformation tool integrated into Excel (and other Microsoft products) that allows users to import, clean, and reshape data from various sources. It provides a user-friendly interface for performing data transformations without needing advanced programming skills. Power Query supports a wide range of data sources, including databases, web services, Excel files, and more.
 
-1) Download the odbc connector 
+1) Download the
 odbc connector - https://dev.mysql.com/downloads/connector/odbc/
 2) Windows + R and type  type odbcad32 
-3) Configure the connection by entering details such as server address, port, username (root), password (1234), and the database name.
+3) Configure the connection by entering details such as server address (localhost), port (3306), username , password, and the database name.
 4) Open Excel and go to the Data tab.
 5) Click on Get Data > From Other Sources > From ODBC
 6) Select your configured DSN or import data from MySQL 
